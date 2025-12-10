@@ -12,6 +12,7 @@ services:
       - "6969:5432"
     volumes:
       - postgis_data:/var/lib/postgresql/data
+      - ./sentinel:/data/sentinel
       - ./uruguay_shape:/data
       - ./scripts:/docker-entrypoint-initdb.d
     # IMPORTANT: Remove any 'platform: linux/amd64' lines if you added them previously!
