@@ -1,0 +1,20 @@
+services:
+  postgis:
+    # REMOVE the 'image' line and replace with 'build'
+    build: . 
+    container_name: postgis_container
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: geodb
+    ports:
+      - "6969:5432"
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+      - ./uruguay_shape:/data
+      - ./scripts:/docker-entrypoint-initdb.d
+    # IMPORTANT: Remove any 'platform: linux/amd64' lines if you added them previously!
+
+volumes:
+  postgis_data:
